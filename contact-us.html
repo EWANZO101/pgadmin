@@ -3,29 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Important Information</title>
+    <title>Contact Us</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-800 text-white">
     <div class="flex items-center justify-center h-screen">
         <div class="w-full max-w-md p-8 space-y-6 bg-gray-900 rounded-lg shadow-md">
-            <h2 class="text-2xl font-semibold text-center">Important Information</h2>
+            <h2 class="text-2xl font-semibold text-center">Contact Us for Help</h2>
+            
+            <form action="/send-to-discord" method="POST">
+                <div class="space-y-4">
+                    <div>
+                        <label for="username" class="block text-sm">Username</label>
+                        <input type="text" id="username" name="username" class="w-full p-3 mt-1 rounded-md bg-gray-700 text-white" required>
+                    </div>
 
-            <p class="text-center">
-                This website allows users to reset their password or force-disable Discord authentication. Please note that we do not store any of your data. Once the password is reset or Discord authentication is disabled, all related data will be wiped from the website for security purposes.
-            </p>
-            <p class="text-center">
-                To proceed, ensure that you have access to the PostgreSQL server remotely. The default port for PostgreSQL is <strong>5432</strong>.
-            </p>
+                    <div>
+                        <label for="email" class="block text-sm">Email</label>
+                        <input type="email" id="email" name="email" class="w-full p-3 mt-1 rounded-md bg-gray-700 text-white" required>
+                    </div>
 
-            <div class="mt-6 text-center">
-                <a href="/" class="bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-md">Back to Admin Panel</a>
-            </div>
-
-            <div class="mt-6 text-center">
-                <p class="text-sm">Having trouble port forwarding? You can contact us for help!</p>
-                <a href="/contact-us" class="bg-green-600 hover:bg-green-700 text-white p-3 rounded-md mt-2 inline-block">Contact Us for Help</a>
-            </div>
+                    <div class="mt-6 text-center">
+                        <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-md">Send Request</button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 </body>
