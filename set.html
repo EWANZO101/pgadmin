@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Reset</title>
+    <!-- Tailwind CSS (Flowbite dependency) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@1.5.0/dist/flowbite.min.js"></script>
+</head>
+<body class="bg-gray-800 text-white">
+    <div class="flex items-center justify-center h-screen">
+        <div class="w-full max-w-md p-8 space-y-6 bg-gray-900 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-center">Admin Panel</h2>
+
+            <!-- Display success or error messages -->
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="space-y-4">
+                    {% for category, message in messages %}
+                        <div class="p-4 text-center rounded-lg {{ 'bg-green-600' if category == 'success' else 'bg-red-600' }}">
+                            <p>{{ message }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+            {% endwith %}
+
+            <!-- Admin actions form -->
+            <form method="POST" class="space-y-4">
+                <div>
+                    <label for="db_name" class="block text-sm">Database Name</label>
+                    <input type="text" id="db_name" name="db_name" required class="w-full p-3 mt-2 bg-gray-700 rounded-md" />
+                </div>
+                <div>
+                    <label for="db_user" class="block text-sm">Database User</label>
+                    <input type="text" id="db_user" name="db_user" required class="w-full p-3 mt-2 bg-gray-700 rounded-md" />
+                </div>
+                <div>
+                    <label for="db_password" class="block text-sm">Database Password</label>
+                    <input type="password" id="db_password" name="db_password" required class="w-full p-3 mt-2 bg-gray-700 rounded-md" />
+                </div>
+                <div>
+                    <label for="db_host" class="block text-sm">Database Host</label>
+                    <input type="text" id="db_host" name="db_host" required class="w-full p-3 mt-2 bg-gray-700 rounded-md" />
+                </div>
+                <div>
+                    <label for="db_port" class="block text-sm">Database Port</label>
+                    <input type="text" id="db_port" name="db_port" value="5432" class="w-full p-3 mt-2 bg-gray-700 rounded-md" />
+                </div>
+                <div>
+                    <label for="username" class="block text-sm">Username</label>
+                    <input type="text" id="username" name="username" required class="w-full p-3 mt-2 bg-gray-700 rounded-md" />
+                </div>
+                <div>
+                    <label for="new_password" class="block text-sm">New Password</label>
+                    <input type="password" id="new_password" name="new_password" required class="w-full p-3 mt-2 bg-gray-700 rounded-md" />
+                </div>
+
+                <!-- Action selection -->
+                <div>
+                    <label for="action" class="block text-sm">Choose Action</label>
+                    <select id="action" name="action" class="w-full p-3 mt-2 bg-gray-700 rounded-md">
+                        <option value="reset_password">Reset Password</option>
+                        <option value="disable_feature">Disable Feature (FORCE_DISCORD_AUTH)</option>
+                    </select>
+                </div>
+
+                <div class="flex items-center justify-between">
+                    <button type="submit" class="w-full p-3 bg-blue-600 rounded-md hover:bg-blue-700">Execute Action</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
