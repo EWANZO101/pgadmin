@@ -8,7 +8,7 @@ DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1337368742413209631/DTDR
 
 @app.route("/")
 def index():
-    return render_template("contact_form.html")
+    return render_template("contact-us.html")
 
 @app.route("/send-to-discord", methods=["POST"])
 def send_to_discord():
@@ -32,5 +32,5 @@ def send_to_discord():
     else:
         return "There was an error sending your message. Please try again later."
 
-if __name__ == "__main__":
-    app.run(debug=True)
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=6006)  # Set port to 6005

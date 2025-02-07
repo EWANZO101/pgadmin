@@ -82,11 +82,11 @@ def index():
 
         return redirect(url_for('index'))
 
-    return render_template('index.html')
+    return render_template('')
 
 @app.route('/info')
 def info():
     return render_template('info.html')
 
-if __name__ == "__main__":
-    app.run(debug=True)
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=6007)  # Set port to 6005
